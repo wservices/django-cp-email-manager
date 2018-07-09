@@ -1,0 +1,104 @@
+{% load staticfiles %}
+{% load i18n %}<!DOCTYPE html>
+
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon">
+
+    <!-- Third-party CSS libraries go here -->
+    <link href="{% static 'bootstrap3/css/bootstrap.min.css' %}" rel="stylesheet">
+    <link href="{% static 'bootstrap3/css/bootstrap-dialog.min.css' %}" rel="stylesheet">
+    <link href="{% static 'css/bootstrap-datetimepicker.min.css' %}" rel="stylesheet">
+    <link href="{% static 'font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+
+    <!-- Project specific CSS -->
+    {% block css %}
+    <link href="{% static 'css/project.css' %}" rel="stylesheet">
+    {% endblock %}
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default navbar-static-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="/">
+            email-manager
+          </a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav">
+            <li><a href="/"><span class="glyphicon glyphicon-home" aria-hidden="true"></span></a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ LANGUAGE_CODE }}</a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown02">{% for lang in LANGUAGES %}
+                <form id="formsetLang{{ lang.0 }}" action="{% url 'set_language' %}" method="POST">
+                  {% csrf_token %}
+                  <input type="hidden" name="language" value="{{ lang.0 }}" />
+                  <input type="hidden" name="next" value="{{ request.get_full_path }}" />
+                </form>
+                <li><a class="language_changer" id="{{ lang.0 }}" href="#">{{ lang.1 }}</a></li>
+              {% endfor %}
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+	  </nav>
+
+    <div class="content">
+      {% if messages %}
+        <div class="container">
+          {% for message in messages %}
+            <div class="alert alert-{{ message.tags }}">{{ message }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+
+      {% block content %}
+      {% endblock content %}
+    </div>
+
+    <footer class="footer">
+      <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+          <div class="container">
+            <div class="navbar-header">
+              <a class="navbar-brand" href="https://djangoeurope.com/">{% trans 'Created by' %} <b>djangoeurope</b></a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+              <li><a>Version 0.0.1</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </footer>
+
+    <!-- Third-party javascript libraries go here -->
+    <script src="{% static 'jquery/jquery.min.js' %}"></script>
+    <script src="{% static 'jquery/js.cookie.js' %}"></script>
+    <script src="{% static 'bootstrap3/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'bootstrap3/js/bootstrap-dialog.min.js' %}"></script>
+    <script src="{% static 'js/moment-with-locales.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap-datetimepicker.min.js' %}"></script>
+
+    <!-- Project specific javascript -->
+    {% block javascript %}
+    <script src="{% static 'js/project.js' %}"></script>
+    {% endblock javascript %}
+      
+  </body>
+</html>
+

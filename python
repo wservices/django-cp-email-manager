@@ -1,0 +1,3 @@
+export DJANGO_SETTINGS_MODULE=config.settings.local
+export PYTHONPATH=$HOME/email-manager
+~/.virtualenvs/email-manager/bin/python $1 $2 $3 $4 $5 $6

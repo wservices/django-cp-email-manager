@@ -1,0 +1,51 @@
+# wtools.
+# Copyright (C) 2018 wservices Ltd.
+# This file is distributed under the same license as the imprint package.
+# wservices Ltd. <info@wservices.ch>, 2018.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-07-09 08:03+0000\n"
+"PO-Revision-Date: 2018-07-09 08:40+0000\n"
+"Last-Translator: Pascal Bader <info@wservices.ch>\n"
+"Language-Team: LANGUAGE <info@wservices.ch>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: forms.py:36
+msgid "session has expired."
+msgstr ""
+
+#: forms.py:58 forms.py:60
+msgid "Login"
+msgstr ""
+
+#: forms.py:93 forms.py:97 forms.py:111 forms.py:114
+msgid "Access denied."
+msgstr ""
+
+#: forms.py:104
+msgid "This email account is not assigned to a mail system."
+msgstr ""
+
+#: forms.py:123
+msgid "Invalid password."
+msgstr ""
+
+#: templates/wtools/email_password_change.html:12
+msgid "Change email account password"
+msgstr ""
+
+#: templates/wtools/email_password_change.html:17
+msgid "Change password"
+msgstr ""
+
+#: views.py:27
+msgid "Password has been changed."
+msgstr ""

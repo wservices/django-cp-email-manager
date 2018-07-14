@@ -19,6 +19,7 @@ API_KEY="INSERT THE API KEY HERE"
 ```
 
 ```bash
+~/.virtualenvs/email-manager/bin/pip install -r ~/email-manager/requirements/production.txt
 cd ~/email-manager/wtools
 ~/.virtualenvs/email-manager/bin/python3 ../manage.py compilemessages
 ~/.virtualenvs/email-manager/bin/python3 ../manage.py collectstatic --noinput
